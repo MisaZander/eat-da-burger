@@ -9,7 +9,7 @@
 //updateOne()
 
 var path = require("path");
-var connection = require(path.join(__dirname, "config", "orm"));
+var connection = require(path.join(__dirname, "connection.js"));
 
 var orm = {
     all: function(tableName, cb) {
@@ -37,7 +37,10 @@ var orm = {
         var queryString = "UPDATE ?? SET ??=?? WHERE id=?";
 
         connection.query(queryString, [tableName, column, newValue, id], function(queryError, queryRes) {
-            
+            if(queryError){
+                throw queryError;
+            }
+            cb(queryRes);
         });//.query()
     }
 }; //orm{}

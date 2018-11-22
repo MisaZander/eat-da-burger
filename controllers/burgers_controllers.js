@@ -15,8 +15,18 @@
 
         res.render("index", hbsObj)
     })
-}
+}*/
+
+var express = require("express");
+var router = express.Router();
+var path = require("path");
+var burger = require(path.join(__dirname, "..", "models", "burger.js"));
+
+router.get("/", function(req, res) {
+    burger.all(function(data) {
+        console.log(data);
+        return res.json(data);
+    });
+}); //router.get
 
 module.exports = router;
-
-*/

@@ -12,5 +12,27 @@ var burger = {
     }
 }
 
-module.exports = burger;
 */
+
+var path = require("path");
+var orm = require(path.join(__dirname, "..", "config", "orm.js"));
+
+var burger = {
+    all: function(cb){
+        orm.all("burgers", function(response) {
+            cb(response);
+        });
+    },
+    create: function(value, cb){
+        orm.create("burgers", "burger_name", value, function(response) {
+            cb(response);
+        });
+    },
+    update: function(id, cb) {
+        orm.update("burgers", "burger_name", true, id, function(response) {
+            cb(response);
+        });
+    }
+}; //burger{}
+
+module.exports = burger;

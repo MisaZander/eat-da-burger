@@ -7,3 +7,39 @@
 //selectAll()
 //insertOne()
 //updateOne()
+
+var path = require("path");
+var connection = require(path.join(__dirname, "config", "orm"));
+
+var orm = {
+    all: function(tableName, cb) {
+        var queryString = "SELECT * FROM " + tableName + ";";
+        connection.query(queryString, function(queryError, queryRes) {
+            if(queryError){
+                throw queryError;
+            }
+            cb(queryRes);
+        });//.query()
+    }, //all()
+    create: function(tableName, column, value, cb) {
+        var queryString = "INSERT INTO " + tableName;
+        queryString += "(??) "
+        queryString += "VALUES (?)";
+
+        connection.query(queryString, [column, value], function(queryError, queryRes) {
+            if(queryError) {
+                throw queryError;
+            }
+            cb(queryRes);
+        }); //.query()
+    }, //create()
+    update: function(tableName, column, newValue, id, cb) {
+        var queryString = "UPDATE ?? SET ??=?? WHERE id=?";
+
+        connection.query(queryString, [tableName, column, newValue, id], function(queryError, queryRes) {
+            
+        });//.query()
+    }
+}; //orm{}
+
+module.exports = orm;

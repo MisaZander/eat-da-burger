@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <img src="assets/img/burger.jpg" alt="Royale with Cheese">
+            <h2>Eat-Da-Burger!</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div id="on-deck" class="col-6 text-center">
+            <h2 class="underlined">On Deck</h2>
+            {{#each burgers}}
+                {{#unless devoured}}
+                    {{> burgers/plate}}
+                {{/unless}}
+            {{/each}}
+        </div>
+        <div id="eaten" class="col-6 text-center">
+            <h2 class="underlined"><u>Devoured</u></h2>
+            {{#each burgers}}
+                {{#if devoured}}
+                    {{> burgers/eaten}}
+                {{/if}}
+            {{/each}}
+        </div>
+    </div>
+</div>

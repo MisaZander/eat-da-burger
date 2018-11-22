@@ -24,8 +24,12 @@ var burger = require(path.join(__dirname, "..", "models", "burger.js"));
 
 router.get("/", function(req, res) {
     burger.all(function(data) {
-        console.log(data);
-        return res.json(data);
+        //console.log(data);
+        //return res.json(data);
+        let hbsData = {
+            burgers: data
+        }
+        res.render("index", hbsData);
     });
 }); //router.get
 

@@ -34,7 +34,7 @@ var orm = {
         }); //.query()
     }, //create()
     update: function(tableName, column, newValue, id, cb) {
-        var queryString = "UPDATE ?? SET ??=?? WHERE id=?";
+        var queryString = "UPDATE ?? SET ??=? WHERE id=?";
 
         connection.query(queryString, [tableName, column, newValue, id], function(queryError, queryRes) {
             if(queryError){

@@ -29,7 +29,7 @@ var burger = {
         });
     },
     update: function(id, cb) {
-        orm.update("burgers", "burger_name", true, id, function(response) {
+        orm.update("burgers", "devoured", true, id, function(response) {
             cb(response);
         });
     }

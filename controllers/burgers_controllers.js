@@ -22,6 +22,12 @@ var router = express.Router();
 var path = require("path");
 var burger = require(path.join(__dirname, "..", "models", "burger.js"));
 
+router.get("/api/burgers", function(req, res) {
+    burger.all(function(data) {
+        return res.json(data);
+    })
+});
+
 router.get("/", function(req, res) {
     burger.all(function(data) {
         //console.log(data);

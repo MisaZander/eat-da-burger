@@ -13,6 +13,11 @@ $(function() {
     $("#submitBurger").on("click", function(event) {
         event.preventDefault();
         let burger = $("#newBurger").val().trim();
+
+        if(burger === "") {
+            alert("You must enter a value in the burger box.");
+            return;
+        }
         //console.log("New Burger: " + burger);
         let data = {
             name: burger

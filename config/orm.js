@@ -22,11 +22,9 @@ var orm = {
         });//.query()
     }, //all()
     create: function(tableName, column, value, cb) {
-        var queryString = "INSERT INTO " + tableName;
-        queryString += "(??) "
-        queryString += "VALUES (?)";
+        var queryString = "INSERT INTO ??(??) VALUES (?)";
 
-        connection.query(queryString, [column, value], function(queryError, queryRes) {
+        connection.query(queryString, [tableName, column, value], function(queryError, queryRes) {
             if(queryError) {
                 throw queryError;
             }

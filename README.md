@@ -24,3 +24,6 @@ A simple full-stack application that implements loads of goodies: Handlebars, No
 6. Alter the contents of the included files to match your machine:
   - Alter the database login credentials in the `config/connection.js` file to match the login credentials of your MySQL server
   - The server by default listens on port 8080. If you prefer a different port, change the 8080 on line 4 of `server.js` to the port of your choice
+7. Open a terminal/shell, cd to the location of the freshly cloned repo, and execute an `npm install` to obtain the required packages.
+8. Activate the server with `npm start` or `node server.js`
+9. Open a browser and go to `http://localhost:8080`, swapping out the 8080 with a different port if you chose to change the port in step 6

@@ -9,12 +9,12 @@
 //updateOne()
 
 var path = require("path");
-var connection = require(path.join(__dirname, "connection.js"));
+var pool = require(path.join(__dirname, "connection.js"));
 
 var orm = {
     all: function(tableName, cb) {
         var queryString = "SELECT * FROM " + tableName + ";";
-        connection.query(queryString, function(queryError, queryRes) {
+        pool.query(queryString, function(queryError, queryRes) {
             if(queryError){
                 throw queryError;
             }
@@ -24,7 +24,7 @@ var orm = {
     create: function(tableName, column, value, cb) {
         var queryString = "INSERT INTO ??(??) VALUES (?)";
 
-        connection.query(queryString, [tableName, column, value], function(queryError, queryRes) {
+        pool.query(queryString, [tableName, column, value], function(queryError, queryRes) {
             if(queryError) {
                 throw queryError;
             }
@@ -34,7 +34,7 @@ var orm = {
     update: function(tableName, column, newValue, id, cb) {
         var queryString = "UPDATE ?? SET ??=? WHERE id=?";
 
-        connection.query(queryString, [tableName, column, newValue, id], function(queryError, queryRes) {
+        pool.query(queryString, [tableName, column, newValue, id], function(queryError, queryRes) {
             if(queryError){
                 throw queryError;
             }
